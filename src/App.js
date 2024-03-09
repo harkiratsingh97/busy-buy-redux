@@ -1,25 +1,82 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Navbar } from "./components/Navbar";
+import { Home } from "./pages/Home";
+import { SignIn } from "./pages/SignIn";
+
+//Router
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+//User Context
+// import { UserContextProvider } from "./userContext";
+import { MyOrders } from "./pages/MyOrders";
+import { SignUp } from "./pages/SignUp";
+import { Cart } from "./pages/Cart";
+import { ProtectedRouteLoggedIn } from "./utils/ProtectedRouteLoggedIn";
+import { ProtectedRouteLoggedOut } from "./utils/ProtectedRouteLoggedOut";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { userChangeAsynkThunk } from "./redux/reducers/userReducer";
+
+//Routing Implementation
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <Navbar />,
+		//   loader: rootLoader,
+		children: [
+			{
+				path: "",
+				element: <Home />,
+				//   loader: teamLoader,
+			},
+
+			{
+				path: "signin",
+				element: (
+					<ProtectedRouteLoggedOut>
+						<SignIn />
+					</ProtectedRouteLoggedOut>
+				),
+			},
+			{
+				path: "signup",
+				element: (
+					<ProtectedRouteLoggedOut>
+						<SignUp />
+					</ProtectedRouteLoggedOut>
+				),
+			},
+			{
+				path: "/",
+				element: <ProtectedRouteLoggedIn />,
+				children: [
+					{
+						path: "myorders",
+						element: <MyOrders />,
+					},
+					{
+						path: "cart",
+						element: <Cart />,
+					},
+				],
+			},
+		],
+	},
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(userChangeAsynkThunk());
+	}, []);
+	return (
+		// <UserContextProvider>
+		<div className="App">
+			<RouterProvider router={router} />
+		</div>
+		// </UserContextProvider>
+	);
 }
 
 export default App;
