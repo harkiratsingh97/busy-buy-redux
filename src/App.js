@@ -69,7 +69,7 @@ function App() {
 
 	useEffect(() => {
 		dispatch(userChangeAsynkThunk());
-	}, []);
+	}, [dispatch]);
 	return (
 		// <UserContextProvider>
 		<div className="App">
