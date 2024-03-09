@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { userSignUpAsynkThunk } from "../redux/reducers/userReducer";
 
 export const SignUp = () => {
-	// const { signUpMethod } = useUserValue();
 	const dispatch = useDispatch();
-
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",

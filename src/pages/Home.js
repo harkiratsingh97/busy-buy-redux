@@ -20,9 +20,9 @@ export const Home = () => {
 					<div className="card-body">
 						<h5 className="card-title">Channel Bag</h5>
 						<h5 className="card-text">₹ 500</h5>
-						<a href="#" className="btn btn-primary">
+						<button  className="btn btn-primary">
 							Add to Cart
-						</a>
+						</button>
 					</div>
 				</div>
 			</div>

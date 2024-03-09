@@ -7,7 +7,7 @@ import {
 	signOut,
 } from "firebase/auth";
 import { db } from "../../firebaseInit";
-import { doc, setDoc, writeBatch } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 const initialState = { user: null };
 
@@ -41,7 +41,7 @@ export const userSignUpAsynkThunk = createAsyncThunk(
 				console.log(user);
 			})
 			.catch((error) => {
-				const errorCode = error.code;
+				// const errorCode = error.code;
 				const errorMessage = error.message;
 				console.log(errorMessage);
 			});
@@ -72,7 +72,7 @@ export const userSignInAsynkThunk = createAsyncThunk(
 				setUser(user);
 			})
 			.catch((error) => {
-				const errorCode = error.code;
+				// const errorCode = error.code;
 				const errorMessage = error.message;
 				console.log(errorMessage);
 			});

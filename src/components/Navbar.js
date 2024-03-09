@@ -1,12 +1,10 @@
 import { Outlet } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import { userSelector } from "../redux/reducers/userReducer";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { usersLogOutAsynkThunk } from "../redux/reducers/userReducer";
 
 export const Navbar = () => {
-	const [log, logOut] = useState();
 	const { user } = useSelector(userSelector);
 	const dispatch = useDispatch();
 	console.log(user);

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useState } from "react";
 import { userSignInAsynkThunk } from "../redux/reducers/userReducer";
@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 export const SignIn = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -15,7 +15,6 @@ export const SignIn = () => {
 	const setSignInData = (e) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
-		
 	};
 
 	const onSubmitSignIn = (e) => {
