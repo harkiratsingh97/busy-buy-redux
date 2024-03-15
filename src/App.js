@@ -14,11 +14,8 @@ import { Cart } from "./pages/Cart";
 import { ProtectedRouteLoggedIn } from "./utils/ProtectedRouteLoggedIn";
 import { ProtectedRouteLoggedOut } from "./utils/ProtectedRouteLoggedOut";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-	userChangeAsynkThunk,
-	userSelector,
-} from "./redux/reducers/userReducer";
+import { useDispatch } from "react-redux";
+import { userChangeAsynkThunk } from "./redux/reducers/userReducer";
 import { getProductsFromFireStore } from "./redux/reducers/productReducer";
 
 //Routing Implementation
