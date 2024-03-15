@@ -21,7 +21,7 @@ const Order = ({ order }) => {
 					{order.order.map((item) => (
 						<tr key={item.id}>
 							<td>{item.title.slice(0, 100)}</td>
-							<td>{item.price}</td>
+							<td>₹ {item.price}</td>
 							<td>{item.quantity}</td>
 							<td>{item.quantity * item.price}</td>
 						</tr>
@@ -33,7 +33,7 @@ const Order = ({ order }) => {
 						<td></td>
 						<td></td>
 						<td>
-							{parseInt(
+							₹ {parseInt(
 								order.order.reduce((totalPrice, item) => {
 									return item.quantity * item.price + totalPrice;
 								}, 0)

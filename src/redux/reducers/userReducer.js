@@ -13,6 +13,7 @@ const initialState = { user: null };
 
 const auth = getAuth();
 
+// Check Authenticated User Asynk Thunk
 export const userChangeAsynkThunk = createAsyncThunk(
 	"user/userChange",
 	async (args, thunkApi) => {
@@ -249,9 +250,8 @@ export const orderCart = createAsyncThunk(
 
 				await setDoc(userRef, {
 					cart: [],
-					orders: [...user.orders, order],
+					orders: [order, ...user.orders],
 				});
-
 				thunkApi.dispatch(setOrders(order));
 			}
 		} catch (e) {
@@ -273,7 +273,7 @@ const userSlice = createSlice({
 		},
 		setOrders: (state, action) => {
 			state.user.cart = [];
-			state.user.orders.push(action.payload);
+			state.user.orders.unshift(action.payload);
 		},
 	},
 });
