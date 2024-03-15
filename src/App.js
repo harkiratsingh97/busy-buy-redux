@@ -70,16 +70,16 @@ const router = createBrowserRouter([
 
 function App() {
 	const dispatch = useDispatch();
-	const { user } = useSelector(userSelector);
+	// const { user } = useSelector(userSelector);
 	useEffect(() => {
 		dispatch(userChangeAsynkThunk());
 		dispatch(getProductsFromFireStore());
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	if (!user) {
-		return <>Loading</>;
-	}
+	// if (!user) {
+	// 	return <>Loading</>;
+	// }
 	return (
 		// <UserContextProvider>
 		<div className="App">
