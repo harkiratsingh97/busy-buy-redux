@@ -15,7 +15,13 @@
 	height: 80px;
 }
 
+.nav-link {
+	cursor: pointer;
+}
 
+.nav-link:hover {
+	color: black;
+}
 
 .signInContainer,
 .signUpContainer {
@@ -36,4 +42,52 @@
 .signInTitle,
 .signUpTitle {
 	font-weight: 1000;
+}
+
+.productsWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	/* justify-content: space-around; */
+}
+
+.productsWrapper .card {
+	margin: 10px;
+}
+
+.productsWrapper .imgContainer {
+	width: 100% !important;
+	height: 250px !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.productsWrapper img {
+	height: fit-content;
+	margin: 10px;
+	width: fit-content;
+	max-width: 95%;
+	max-height: 95%;
+}
+
+.cartValueWrapper {
+	background-color: lightgray;
+	padding: 10px;
+	border-radius: 20px;
+	padding-left: 30px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.cartValueWrapper * {
+	display: inline-block;
+}
+
+table {
+	background-color: lightgray;
+	border-spacing: 10px !important;
+	/* margin: 2px; */
+	/* padding: 10px; */
 }

@@ -14,8 +14,12 @@ import { Cart } from "./pages/Cart";
 import { ProtectedRouteLoggedIn } from "./utils/ProtectedRouteLoggedIn";
 import { ProtectedRouteLoggedOut } from "./utils/ProtectedRouteLoggedOut";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { userChangeAsynkThunk } from "./redux/reducers/userReducer";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	userChangeAsynkThunk,
+	userSelector,
+} from "./redux/reducers/userReducer";
+import { getProductsFromFireStore } from "./redux/reducers/productReducer";
 
 //Routing Implementation
 const router = createBrowserRouter([
@@ -47,7 +51,7 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-				path: "/",
+				path: "",
 				element: <ProtectedRouteLoggedIn />,
 				children: [
 					{
@@ -66,10 +70,16 @@ const router = createBrowserRouter([
 
 function App() {
 	const dispatch = useDispatch();
-
+	const { user } = useSelector(userSelector);
 	useEffect(() => {
 		dispatch(userChangeAsynkThunk());
-	}, [dispatch]);
+		dispatch(getProductsFromFireStore());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	if (!user) {
+		return <>Loading</>;
+	}
 	return (
 		// <UserContextProvider>
 		<div className="App">

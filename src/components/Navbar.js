@@ -7,7 +7,7 @@ import { usersLogOutAsynkThunk } from "../redux/reducers/userReducer";
 export const Navbar = () => {
 	const { user } = useSelector(userSelector);
 	const dispatch = useDispatch();
-	console.log(user);
+	
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg bg-body-tertiary">
